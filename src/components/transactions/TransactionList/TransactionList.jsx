@@ -7,22 +7,23 @@ export const TransactionList = (user) => {
         // create a new async function
         const fetchExpenses = async () => {
             const expenses = await financeService.getTransactions(user);//call the transactions list
-            console.log(expenses);
-            setTransactions(...[expenses]);
+
+            setTransactions(expenses.transactions);
+            console.log(transactions)
         };
         // invoke the function
         fetchExpenses();
-    }, []);
+    },[user]);
 
     return (
         <div>
             <h2>Transaction List:</h2>
-            <ul>
+            {/* <ul>
                 {transactions.forEach(transaction => {
-                    //return (<Transaction transaction={transaction}></Transaction>)
+                    // return (<Transaction transaction={transaction}></Transaction>)
                     return (<li> {transaction.name} </li>)
                 })}
-            </ul>
+            </ul> */}
         </div>
     )
 }
