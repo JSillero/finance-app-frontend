@@ -13,17 +13,26 @@ export const TransactionList = (user) => {
         };
         // invoke the function
         fetchExpenses();
-    },[user]);
+    },[]);
+
+    const displayTransactions  = transactions.map(transaction => {
+        return (
+            <li key={transaction._id}>
+                <p>{transaction.name}</p>
+                <p>{transaction.amount}</p>
+                <p>{transaction.type}</p>
+            </li>
+        )
+    })
+
+
 
     return (
         <div>
             <h2>Transaction List:</h2>
-            {/* <ul>
-                {transactions.forEach(transaction => {
-                    // return (<Transaction transaction={transaction}></Transaction>)
-                    return (<li> {transaction.name} </li>)
-                })}
-            </ul> */}
+            <ul>
+                {displayTransactions}
+            </ul>
         </div>
     )
 }
